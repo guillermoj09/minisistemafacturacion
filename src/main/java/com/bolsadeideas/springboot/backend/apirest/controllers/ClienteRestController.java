@@ -50,7 +50,7 @@ import com.bolsadeideas.springboot.backend.apirest.models.services.IUploadFileSe
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = { "http://localhost:4200" } )
+@CrossOrigin(origins = { "http://localhost:4200","*"} )
 public class ClienteRestController {
 	
 	@Autowired
@@ -73,7 +73,7 @@ public class ClienteRestController {
 		return clienteService.findAll(PageRequest.of(page, 4));
 		
 	}
-	//@Secured({"ROLE_ADMIN","ROLE_USER"})
+	@Secured({"ROLE_ADMIN","ROLE_USER"})
 	@GetMapping("/clientes/{id}")
 	public ResponseEntity<?> show(@PathVariable Long id) {
 		Cliente cliente = null;
